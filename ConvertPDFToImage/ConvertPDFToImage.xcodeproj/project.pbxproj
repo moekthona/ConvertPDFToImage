@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		434743BF8AC1F45E87FE7B5F /* Pods_ConvertPDFToImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42B72732451851F462A0AD5 /* Pods_ConvertPDFToImage.framework */; };
 		C4BC27E6212E6735008080E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BC27E5212E6735008080E4 /* AppDelegate.swift */; };
 		C4BC27E8212E6735008080E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BC27E7212E6735008080E4 /* ViewController.swift */; };
 		C4BC27EB212E6735008080E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4BC27E9212E6735008080E4 /* Main.storyboard */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		46BC4F7FE02EC4EFBB8FF2BB /* Pods-ConvertPDFToImage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConvertPDFToImage.release.xcconfig"; path = "Pods/Target Support Files/Pods-ConvertPDFToImage/Pods-ConvertPDFToImage.release.xcconfig"; sourceTree = "<group>"; };
+		A83A9E122A02B2D6B9D1FD44 /* Pods-ConvertPDFToImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConvertPDFToImage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConvertPDFToImage/Pods-ConvertPDFToImage.debug.xcconfig"; sourceTree = "<group>"; };
 		C4BC27E2212E6735008080E4 /* ConvertPDFToImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConvertPDFToImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4BC27E5212E6735008080E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4BC27E7212E6735008080E4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +27,7 @@
 		C4BC27EF212E6738008080E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C4BC27F1212E6738008080E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4BC27F7212E67ED008080E4 /* SwiftLanguage.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = SwiftLanguage.pdf; sourceTree = "<group>"; };
+		D42B72732451851F462A0AD5 /* Pods_ConvertPDFToImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConvertPDFToImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				434743BF8AC1F45E87FE7B5F /* Pods_ConvertPDFToImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		126BD175C5E0FAE4188736A4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A83A9E122A02B2D6B9D1FD44 /* Pods-ConvertPDFToImage.debug.xcconfig */,
+				46BC4F7FE02EC4EFBB8FF2BB /* Pods-ConvertPDFToImage.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		C4BC27D9212E6735008080E4 = {
 			isa = PBXGroup;
 			children = (
 				C4BC27E4212E6735008080E4 /* ConvertPDFToImage */,
 				C4BC27E3212E6735008080E4 /* Products */,
+				126BD175C5E0FAE4188736A4 /* Pods */,
+				DF21B21DCF86B05CA3E69FE9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +83,14 @@
 			path = ConvertPDFToImage;
 			sourceTree = "<group>";
 		};
+		DF21B21DCF86B05CA3E69FE9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D42B72732451851F462A0AD5 /* Pods_ConvertPDFToImage.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +98,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C4BC27F4212E6738008080E4 /* Build configuration list for PBXNativeTarget "ConvertPDFToImage" */;
 			buildPhases = (
+				29EAF72CD8ECBDA38910BE67 /* [CP] Check Pods Manifest.lock */,
 				C4BC27DE212E6735008080E4 /* Sources */,
 				C4BC27DF212E6735008080E4 /* Frameworks */,
 				C4BC27E0212E6735008080E4 /* Resources */,
+				4D02AF41AE4AD55F1E898D64 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -133,6 +159,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		29EAF72CD8ECBDA38910BE67 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ConvertPDFToImage-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4D02AF41AE4AD55F1E898D64 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ConvertPDFToImage/Pods-ConvertPDFToImage-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ConvertPDFToImage/Pods-ConvertPDFToImage-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C4BC27DE212E6735008080E4 /* Sources */ = {
@@ -282,15 +347,13 @@
 		};
 		C4BC27F5212E6738008080E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A83A9E122A02B2D6B9D1FD44 /* Pods-ConvertPDFToImage.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V69UCUSM35;
 				INFOPLIST_FILE = ConvertPDFToImage/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ConvertPDFToImage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -300,15 +363,13 @@
 		};
 		C4BC27F6212E6738008080E4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46BC4F7FE02EC4EFBB8FF2BB /* Pods-ConvertPDFToImage.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V69UCUSM35;
 				INFOPLIST_FILE = ConvertPDFToImage/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ConvertPDFToImage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

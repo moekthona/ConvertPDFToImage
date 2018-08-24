@@ -8,6 +8,7 @@
 
 import UIKit
 import MobileCoreServices
+import Alamofire
 
 class ViewController: UIViewController {
 
@@ -17,16 +18,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         loading = UIViewController.displaySpinner(onView: self.view)
+        let url = "https://drive.google.com/uc?export=download&id=0Bz_c6UWaP7KYc3RhcnRlcl9maWxl"
+        loadWithAlamofire(url: url) { (path) in
         
-        let url = URL(string: "https://drive.google.com/uc?export=download&id=0Bz_c6UWaP7KYc3RhcnRlcl9maWxl")
-        load(url: url!) { (temUrl) in
+            try! convertPDF(at: path, fileType: .png, completion: { (arrImage) in
             
-            let pdfFilePath = Bundle.main.bundlePath + "/book.pdf"
-            try! FileManager.default.copyItem(at: temUrl, to: URL(fileURLWithPath: pdfFilePath))
-            let sourceURL = URL(fileURLWithPath: pdfFilePath)
-
-            try! self.convertPDF(at: sourceURL, fileType: .png, completion: { (arrImage) in
-                
                 DispatchQueue.main.async {
                     let img = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
                     self.view.addSubview(img)
@@ -34,14 +30,38 @@ class ViewController: UIViewController {
                     img.contentMode = .scaleAspectFit
                     UIViewController.removeSpinner(spinner: self.loading!)
                 }
-                
+            
             })
-            
-            
-            print(pdfFilePath)
-            
-            
         }
+        
+        
+        
+        //load using url session
+        
+//        let url = URL(string: "https://drive.google.com/uc?export=download&id=0Bz_c6UWaP7KYc3RhcnRlcl9maWxl")
+//        load(url: url!) { (temUrl) in
+//
+//            let pdfFilePath = Bundle.main.bundlePath + "/book.pdf"
+//            try! FileManager.default.copyItem(at: temUrl, to: URL(fileURLWithPath: pdfFilePath))
+//            let sourceURL = URL(fileURLWithPath: pdfFilePath)
+//
+//            try! self.convertPDF(at: sourceURL, fileType: .png, completion: { (arrImage) in
+//
+//                DispatchQueue.main.async {
+//                    let img = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+//                    self.view.addSubview(img)
+//                    img.image = UIImage(cgImage: arrImage[0])
+//                    img.contentMode = .scaleAspectFit
+//                    UIViewController.removeSpinner(spinner: self.loading!)
+//                }
+//
+//            })
+//
+//
+//            print(pdfFilePath)
+        
+            
+       }
     }
     
     struct ImageFileType {
@@ -89,28 +109,50 @@ class ViewController: UIViewController {
     
     
     //load pdf
-    func load(url: URL, completion: @escaping (URL) -> ()) {
-        let sessionConfig = URLSessionConfiguration.default
-        let session = URLSession(configuration: sessionConfig)
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        
-        let task = session.downloadTask(with: request) { (tempLocalUrl, response, error) in
-            if let tempLocalUrl = tempLocalUrl, error == nil {
-                // Success
-                if let statusCode = (response as? HTTPURLResponse)?.statusCode {
-                    print("Success: \(statusCode)")
-                }
-                completion(tempLocalUrl)
-                
-            } else {
-                print("Failure: 3333");
-            }
-        }
-        task.resume()
-    }
+//    func load(url: URL, completion: @escaping (URL) -> ()) {
+//        let sessionConfig = URLSessionConfiguration.default
+//        let session = URLSession(configuration: sessionConfig)
+//        var request = URLRequest(url: url)
+//        request.httpMethod = "GET"
+//
+//        let task = session.downloadTask(with: request) { (tempLocalUrl, response, error) in
+//            if let tempLocalUrl = tempLocalUrl, error == nil {
+//                // Success
+//                if let statusCode = (response as? HTTPURLResponse)?.statusCode {
+//                    print("Success: \(statusCode)")
+//                }
+//                completion(tempLocalUrl)
+//
+//            } else {
+//                print("Failure: 3333");
+//            }
+//        }
+//        task.resume()
+//    }
+
     
-}
+    func loadWithAlamofire(url : String ,completion: @escaping(URL) -> ()){
+        
+        let destination = DownloadRequest.suggestedDownloadDestination(for: .documentDirectory)
+        
+        Alamofire.download(
+            url,
+            method: .get,
+            parameters: nil,
+            encoding: JSONEncoding.default,
+            headers: nil,
+            to: destination).downloadProgress(closure: { (progress) in
+                //progress closure
+               // print(progress)
+            }).response(completionHandler: { (DefaultDownloadResponse) in
+                //here you able to access the DefaultDownloadResponse
+                //result closure
+                completion(DefaultDownloadResponse.destinationURL!)
+            })
+        
+    
+    }
+
 
 extension UIViewController {
     class func displaySpinner(onView : UIView) -> UIView {
